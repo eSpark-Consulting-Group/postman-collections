@@ -723,7 +723,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d2319c22-b214-4697-bd10-612810180541",
+				"id": "b3c38a3a-24b1-4ead-a6b4-f85527410a3d",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -735,7 +735,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "72d5cc4a-1a42-4ee4-b0b7-a877fb6ff54e",
+				"id": "4a9899f9-cd02-429d-9372-6a1bce4b8157",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -748,103 +748,87 @@
 	"variable": [
 		{
 			"key": "BASE_URL",
-			"value": ""
+			"value": "https://www.example.com"
 		},
 		{
 			"key": "access_token",
-			"value": ""
+			"value": "access_token"
 		},
 		{
 			"key": "merchant_user_id",
-			"value": ""
+			"value": "merchant_user_id"
 		},
 		{
 			"key": "instrument_token",
-			"value": ""
+			"value": "instrument_token"
 		},
 		{
 			"key": "transaction_date",
-			"value": ""
+			"value": "transaction_date"
 		},
 		{
 			"key": "KEY",
-			"value": "",
-			"type": "default"
+			"value": "KEY"
 		},
 		{
 			"key": "MERCHANT_ID",
-			"value": "",
-			"type": "default"
+			"value": "MERCHANT_ID"
 		},
 		{
 			"key": "basket_id",
-			"value": "",
-			"type": "default"
+			"value": "basket_id"
 		},
 		{
 			"key": "total_amount",
-			"value": "",
-			"type": "default"
+			"value": "total_amount"
 		},
 		{
 			"key": "mobile_number",
-			"value": "",
-			"type": "default"
+			"value": "mobile_number"
 		},
 		{
 			"key": "email_address",
-			"value": "",
-			"type": "default"
+			"value": "email_address"
 		},
 		{
 			"key": "bank_code",
-			"value": "",
-			"type": "default"
+			"value": "bank_code"
 		},
 		{
 			"key": "cnic_number",
-			"value": "",
-			"type": "default"
+			"value": "{{cnic_number}}"
 		},
 		{
 			"key": "bank_accouny_number",
-			"value": "",
-			"type": "default"
+			"value": "{{bank_accouny_number}}"
 		},
 		{
 			"key": "transaction_id",
-			"value": "",
-			"type": "default"
+			"value": "transaction_id"
 		},
 		{
 			"key": "bank_account_number",
-			"value": "",
-			"type": "default"
+			"value": "{{bank_account_number}}"
 		},
 		{
 			"key": "OTP",
-			"value": "",
-			"type": "default"
+			"value": "OPT"
 		},
 		{
 			"key": "account_title",
-			"value": "",
-			"type": "default"
+			"value": "account_title"
 		},
 		{
 			"key": "email",
-			"value": "",
-			"type": "default"
+			"value": "email"
 		},
 		{
 			"key": "mobile",
-			"value": "",
-			"type": "default"
+			"value": "{{mobile}}"
 		},
 		{
 			"key": "account_number",
-			"value": "",
-			"type": "default"
+			"value": "{{account_number}}"
 		}
 	]
 }
