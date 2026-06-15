@@ -1,0 +1,782 @@
+{
+  "info": {
+    "_postman_id": "3300d2cc-2d4a-484f-bf44-e074183aec5a",
+    "name": "apayfast",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17217232",
+    "_collection_link": "https://go.postman.co/collection/17217232-3300d2cc-2d4a-484f-bf44-e074183aec5a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "merchant_id",
+              "value": "{{MERCHANT_ID}}",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            },
+            {
+              "key": "secured_key",
+              "value": "{{KEY}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "/token",
+          "path": [
+            "token"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \\\r\n  /token \\\r\n  -H 'content-type: application/x-www-form-urlencoded' \\\r\n  -d 'merchant_id={{MERCHANT_ID}}&grant_type=client_credentials&secured_key={{KEY}}'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/refreshtoken",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "cache-control",
+            "value": "no-cache"
+          },
+          {
+            "key": "content-type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/refreshtoken",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "refreshtoken"
+          ]
+        },
+        "description": "Generated from cURL: curl -X POST \\\r\n  {{BASE_URL}}/refreshtoken \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/x-www-form-urlencoded' "
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/list/banks",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "cache-control",
+            "value": "no-cache"
+          },
+          {
+            "key": "content-type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "basket_id",
+              "value": "{{basket_id}}",
+              "type": "text"
+            },
+            {
+              "key": "txnamt",
+              "value": "{{total_amount}}",
+              "type": "text"
+            },
+            {
+              "key": "customer_mobile_no",
+              "value": "{{mobile_number}}",
+              "type": "text"
+            },
+            {
+              "key": "customer_email_address",
+              "value": "{{email_address}}",
+              "type": "text"
+            },
+            {
+              "key": "account_type_id",
+              "value": "3",
+              "type": "text"
+            },
+            {
+              "key": "bank_code",
+              "value": "{{bank_code}}",
+              "type": "text"
+            },
+            {
+              "key": "cnic_number",
+              "value": "{{cnic_number}}",
+              "type": "text"
+            },
+            {
+              "key": "account_number",
+              "value": "{{bank_accouny_number}}",
+              "type": "text"
+            },
+            {
+              "key": "order_date",
+              "value": "{{transaction_date}}",
+              "type": "text"
+            },
+            {
+              "key": "otp_required",
+              "value": "yes/no",
+              "type": "text"
+            },
+            {
+              "key": "recurring_txn",
+              "value": "yes/no",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/list/banks",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "list",
+            "banks"
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \\\n  {{BASE_URL}}/list/banks \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/x-www-form-urlencoded' \n\ncurl -X GET \\\n  '{{BASE_URL}}/list/instruments?bank_code={{bank code}}' \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/x-www-form-urlencoded' \n\ncurl -X GET \\\n  '{{BASE_URL}}/list/instrumentbanks?instrument_id=1' \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/x-www-form-urlencoded' \n\ncurl --location --request POST '{{BASE_URL}}/customer/validate' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}' \\\r\n--data-urlencode 'basket_id={{basket_id}}' \\\r\n--data-urlencode 'txnamt={{total amount}}' \\\r\n--data-urlencode 'customer_mobile_no={{mobile number}}' \\\r\n--data-urlencode 'customer_email_address={{email address}}' \\\r\n--data-urlencode 'account_type_id=3' \\\r\n--data-urlencode 'bank_code={{bank code}}' \\\r\n--data-urlencode 'cnic_number={{cnic number}}' \\\r\n--data-urlencode 'account_number={{bank account number}}' \\\r\n--data-urlencode 'order_date={{transaction date}}' \\\r\n--data-urlencode 'otp_required=yes/no' \\\r\n--data-urlencode 'recurring_txn=yes/no'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/transaction/{{transaction_id}}",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/transaction/{{transaction_id}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "transaction",
+            "{{transaction_id}}"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request GET '{{BASE_URL}}/transaction/{{transaction_id}}' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/transaction/refund/{{transaction_id}}",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "txnamt",
+              "value": "{{total_amount}}",
+              "type": "text"
+            },
+            {
+              "key": "refund_reason",
+              "value": "Refund",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/transaction/refund/{{transaction_id}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "transaction",
+            "refund",
+            "{{transaction_id}}"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request POST '{{BASE_URL}}/transaction/refund/{{transaction_id}}' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer a68adea0cc508db888625bd9a4b9d850521219df68cbf33926c4bbff8c50c00f' \\\r\n--data-urlencode 'txnamt={{total amount}}' \\\r\n--data-urlencode 'refund_reason=Refund'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/list/instruments?bank_code={{bank code}}",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "cache-control",
+            "value": "no-cache"
+          },
+          {
+            "key": "content-type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/list/instruments?bank_code={{bank_code}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "list",
+            "instruments"
+          ],
+          "query": [
+            {
+              "key": "bank_code",
+              "value": "{{bank_code}}"
+            }
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \\\r\n  '{{BASE_URL}}/list/instruments?bank_code={{bank code}}' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/x-www-form-urlencoded' "
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/list/instrumentbanks?instrument_id=1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "cache-control",
+            "value": "no-cache"
+          },
+          {
+            "key": "content-type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/list/instrumentbanks?instrument_id=1",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "list",
+            "instrumentbanks"
+          ],
+          "query": [
+            {
+              "key": "instrument_id",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Generated from cURL: curl -X GET \\\r\n  '{{BASE_URL}}/list/instrumentbanks?instrument_id=1' \\\r\n  -H 'cache-control: no-cache' \\\r\n  -H 'content-type: application/x-www-form-urlencoded' "
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/customer/validate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "basket_id",
+              "value": "{{basket_id}}",
+              "type": "text"
+            },
+            {
+              "key": "txnamt",
+              "value": "{{total_amount}}",
+              "type": "text"
+            },
+            {
+              "key": "customer_mobile_no",
+              "value": "{{mobile_number}}",
+              "type": "text"
+            },
+            {
+              "key": "customer_email_address",
+              "value": "{{email_address}}",
+              "type": "text"
+            },
+            {
+              "key": "account_type_id",
+              "value": "3",
+              "type": "text"
+            },
+            {
+              "key": "bank_code",
+              "value": "{{bank_code}}",
+              "type": "text"
+            },
+            {
+              "key": "cnic_number",
+              "value": "{{cnic_number}}",
+              "type": "text"
+            },
+            {
+              "key": "account_number",
+              "value": "{{bank_account_number}}",
+              "type": "text"
+            },
+            {
+              "key": "order_date",
+              "value": "{{transaction_date}}",
+              "type": "text"
+            },
+            {
+              "key": "otp_required",
+              "value": "yes",
+              "type": "text"
+            },
+            {
+              "key": "recurring_txn",
+              "value": "yes",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/customer/validate",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "customer",
+            "validate"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request POST '{{BASE_URL}}/customer/validate' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}' \\\r\n--data-urlencode 'basket_id={{basket_id}}' \\\r\n--data-urlencode 'txnamt={{total amount}}' \\\r\n--data-urlencode 'customer_mobile_no={{mobile number}}' \\\r\n--data-urlencode 'customer_email_address={{email address}}' \\\r\n--data-urlencode 'account_type_id=3' \\\r\n--data-urlencode 'bank_code={{bank code}}' \\\r\n--data-urlencode 'cnic_number={{cnic number}}' \\\r\n--data-urlencode 'account_number={{bank account number}}' \\\r\n--data-urlencode 'order_date={{transaction date}}' \\\r\n--data-urlencode 'otp_required=yes/no' \\\r\n--data-urlencode 'recurring_txn=yes/no'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "basket_id",
+              "value": "{{basket_id}}",
+              "type": "text"
+            },
+            {
+              "key": "txnamt",
+              "value": "{{total_amount}}",
+              "type": "text"
+            },
+            {
+              "key": "customer_email_address",
+              "value": "{{email}}",
+              "type": "text"
+            },
+            {
+              "key": "account_type_id",
+              "value": "3",
+              "type": "text"
+            },
+            {
+              "key": "customer_mobile_no",
+              "value": "{{mobile}}",
+              "type": "text"
+            },
+            {
+              "key": "account_number",
+              "value": "{{account_number}}",
+              "type": "text"
+            },
+            {
+              "key": "cnic_number",
+              "value": "{{cnic_number}}",
+              "type": "text"
+            },
+            {
+              "key": "account_title",
+              "value": "{{account_title}}",
+              "type": "text"
+            },
+            {
+              "key": "bank_code",
+              "value": "{{bank_code}}",
+              "type": "text"
+            },
+            {
+              "key": "order_date",
+              "value": "{{transaction_date}}",
+              "type": "text"
+            },
+            {
+              "key": "otp_required",
+              "value": "yes",
+              "type": "text"
+            },
+            {
+              "key": "recurring_txn",
+              "value": "yes\n",
+              "type": "text"
+            },
+            {
+              "key": "otp",
+              "value": "{{OTP}}",
+              "type": "text"
+            },
+            {
+              "key": "transaction_id",
+              "value": "{{transaction_id}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/transaction",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "transaction"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request POST '{{BASE_URL}}/transaction' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}' \\\r\n--data-urlencode 'basket_id={{basket_id}}' \\\r\n--data-urlencode 'txnamt={{total a amount}}' \\\r\n--data-urlencode 'customer_email_address={{email}}' \\\r\n--data-urlencode 'account_type_id=3' \\\r\n--data-urlencode 'customer_mobile_no={{mobile}}' \\\r\n--data-urlencode 'account_number={{account number}}' \\\r\n--data-urlencode 'cnic_number={{cnic number}}' \\\r\n--data-urlencode 'account_title={{account title}}' \\\r\n--data-urlencode 'bank_code={{bank code}}' \\\r\n--data-urlencode 'order_date={{transaction dat3}}' \\\r\n--data-urlencode 'otp_required=yes/no' \\\r\n--data-urlencode 'recurring_txn=yes/no' \\\r\n--data-urlencode 'otp={{OTP}}' \\\r\n--data-urlencode 'transaction_id={{transaction_id}}'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/transaction/token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "merchant_user_id",
+              "value": "{{merchant_user_id}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/transaction/token",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "transaction",
+            "token"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request POST '{{BASE_URL}}/transaction/token' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}' \\\r\n--data-urlencode 'merchant_user_id={{merchant's user id}}' \\\r\n--data-urlencode 'user_mobile_number={{user mobile number}}' \\\r\n--data-urlencode 'basket_id={{basket_id}}' \\\r\n--data-urlencode 'txnamt={{total amount}}' \\\r\n--data-urlencode 'account_type=4' \\\r\n--data-urlencode 'bank_code={{bank code}}' \\\r\n--data-urlencode 'cnic_number={{cnic_number}}' \\\r\n--data-urlencode 'account_number={{account_number}}' \\\r\n--data-urlencode 'account_title={{account title}}'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/transaction/tokenized",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "instrument_token",
+              "value": "{{instrument_token}}",
+              "type": "text"
+            },
+            {
+              "key": "transaction_id",
+              "value": "{{transaction_id}}",
+              "type": "text"
+            },
+            {
+              "key": "merchant_user_id",
+              "value": "{{merchants",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/transaction/tokenized",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "transaction",
+            "tokenized"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request POST '{{BASE_URL}}/transaction/tokenized' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}' \\\r\n--data-urlencode 'instrument_token={{instrument token}}' \\\r\n--data-urlencode 'transaction_id={{transaction_id}}' \\\r\n--data-urlencode 'merchant_user_id={{merchant's user id}}' \\\r\n--data-urlencode 'user_mobile_number={{user mobile number}}' \\\r\n--data-urlencode 'basket_id={{basket_id}}' \\\r\n--data-urlencode 'order_date={{transaction date}}' \\\r\n--data-urlencode 'txndesc={{description}}' \\\r\n--data-urlencode 'txnamt={{total amount}}' \\\r\n--data-urlencode 'otp={{OTP}}'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/user/instruments",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "merchant_user_id",
+              "value": "{{merchant_user_id}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/user/instruments",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "user",
+            "instruments"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request POST '{{BASE_URL}}/user/instruments' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}' \\\r\n--data-urlencode 'merchant_user_id={{merchant's user id}}' \\\r\n--data-urlencode 'user_mobile_number={{user mobile number}}' \\\r\n--data-urlencode 'basket_id={{basket_id}}' \\\r\n--data-urlencode 'txnamt={{total amount}}' \\\r\n--data-urlencode 'account_type=4' \\\r\n--data-urlencode 'bank_code={{bank code}}' \\\r\n--data-urlencode 'cnic_number={{cnic_number}}' \\\r\n--data-urlencode 'account_number={{account_number}}' \\\r\n--data-urlencode 'account_title={{account title}}'"
+      },
+      "response": []
+    },
+    {
+      "name": "{{BASE_URL}}/transaction/recurring/otp",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "instrument_token",
+              "value": "{{instrument_token}}",
+              "type": "text"
+            },
+            {
+              "key": "merchant_user_id",
+              "value": "{{merchant_user_id}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/transaction/recurring/otp",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "transaction",
+            "recurring",
+            "otp"
+          ]
+        },
+        "description": "Generated from cURL: curl --location --request POST '{{BASE_URL}}/transaction/recurring/otp' \\\r\n--header 'Content-Type: application/x-www-form-urlencoded' \\\r\n--header 'Authorization: Bearer {{access_token}}' \\\r\n--data-urlencode 'instrument_token={{instrument token}}' \\\r\n--data-urlencode 'merchant_user_id={{merchant's user id}}' \\\r\n--data-urlencode 'user_mobile_number={{mobile}}' \\\r\n--data-urlencode 'basket_id={{basket_id}}' \\\r\n--data-urlencode 'txnamt={{Total amount}}' \\\r\n--data-urlencode 'order_date={{transaction date}}'"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "https://www.example.com"
+    },
+    {
+      "key": "access_token",
+      "value": "access_token"
+    },
+    {
+      "key": "merchant_user_id",
+      "value": "merchant_user_id"
+    },
+    {
+      "key": "instrument_token",
+      "value": "instrument_token"
+    },
+    {
+      "key": "transaction_date",
+      "value": "transaction_date"
+    },
+    {
+      "key": "KEY",
+      "value": "KEY"
+    },
+    {
+      "key": "MERCHANT_ID",
+      "value": "MERCHANT_ID"
+    },
+    {
+      "key": "basket_id",
+      "value": "basket_id"
+    },
+    {
+      "key": "total_amount",
+      "value": "total_amount"
+    },
+    {
+      "key": "mobile_number",
+      "value": "mobile_number"
+    },
+    {
+      "key": "email_address",
+      "value": "email_address"
+    },
+    {
+      "key": "bank_code",
+      "value": "bank_code"
+    },
+    {
+      "key": "cnic_number",
+      "value": "{{cnic_number}}"
+    },
+    {
+      "key": "bank_accouny_number",
+      "value": "{{bank_accouny_number}}"
+    },
+    {
+      "key": "transaction_id",
+      "value": "transaction_id"
+    },
+    {
+      "key": "bank_account_number",
+      "value": "{{bank_account_number}}"
+    },
+    {
+      "key": "OTP",
+      "value": "OPT"
+    },
+    {
+      "key": "account_title",
+      "value": "account_title"
+    },
+    {
+      "key": "email",
+      "value": "email"
+    },
+    {
+      "key": "mobile",
+      "value": "{{mobile}}"
+    },
+    {
+      "key": "account_number",
+      "value": "{{account_number}}"
+    }
+  ]
+}
